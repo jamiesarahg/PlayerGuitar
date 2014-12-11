@@ -23,9 +23,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serial
+var SerialPort = serialport.SerialPort;
+var serialPort = new SerialPort("/dev/ttyUSB0", { //MUST FIND WHERE IT IS!!
+baudrate: 9600,
+parser: serialport.parsers.readline("\n")
+});
+serialData = [];
+serialPort.on('open', function () {
+serialPort.on('data', function(data) {
+console.log('data: ' + data);
+serialData.unshift(data);
+});
+});
+
+
 app.use('/', routes);
 app.use('/users', users);
-app.use('/songs', songs);
+app.post('/songs/:id', function(req, res) {
+  serialPort.write(req.params.id)
+  console.log(req.params.id);
+  res.end();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,6 +52,8 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
+
 
 // error handlers
 
@@ -59,6 +80,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000, function() {
+
     console.log("Server running on port 3000");
 });
 // module.exports = app;

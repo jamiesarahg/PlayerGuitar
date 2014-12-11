@@ -1,8 +1,8 @@
 extends layout
-
 block content
   h1= title
-  p Welcome to #{title}
+  p Please click on a song to play
   ul
+
     each song in songs
-      li song
+      button(class="btn" id=song.sindex)  #{song.sname}
