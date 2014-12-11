@@ -1,8 +1,16 @@
 extends layout
+block sidebar
+  .sidebar
+    h1 About Rockin Robot
+    p
+      | Sed auctor neque eu tellus rhoncus ut
+      | eleifend nibh porttitor. Ut in nulla enim.
 block content
   h1= title
-  p Please click on a song to play
+  p Please click on a song to play!
   ul
 
     each song in songs
-      button(class="btn" id=song.sindex)  #{song.sname}
+      <br />
+      <br />
+      button(class="btn" id=song.sindex)  #{song.sname} 

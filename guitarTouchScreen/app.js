@@ -23,26 +23,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serial
-var SerialPort = serialport.SerialPort;
-var serialPort = new SerialPort("/dev/ttyUSB0", { //MUST FIND WHERE IT IS!!
-baudrate: 9600,
-parser: serialport.parsers.readline("\n")
-});
-serialData = [];
-serialPort.on('open', function () {
-serialPort.on('data', function(data) {
-console.log('data: ' + data);
-serialData.unshift(data);
-});
-});
+// // Serial
+// var SerialPort = serialport.SerialPort;
+// var serialPort = new SerialPort("/dev/ttyUSB0", { //MUST FIND WHERE IT IS!!
+// baudrate: 9600,
+// parser: serialport.parsers.readline("\n")
+// });
+// serialData = [];
+// serialPort.on('open', function () {
+// serialPort.on('data', function(data) {
+// console.log('data: ' + data);
+// serialData.unshift(data);
+// });
+// });
 
 
 app.use('/', routes);
 app.use('/users', users);
 app.post('/songs/:id', function(req, res) {
-  serialPort.write(req.params.id)
+  //serialPort.write(req.params.id)
+  console.log('hi');
   console.log(req.params.id);
+
   res.end();
 });
 
