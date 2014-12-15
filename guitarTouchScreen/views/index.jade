@@ -8,9 +8,14 @@ block sidebar
 block content
   h1= title
   p Please click on a song to play!
-  ul
+      //-#navcontainer
+    table  
+      tr
+        each song in songs
+          td
+            
 
-    each song in songs
-      <br />
-      <br />
-      button(class="btn" id=song.sindex)  #{song.sname} 
+            img(src= "images/"+song.img id=song.sindex  height="100" width="100") 
+            p #{song.sname}
+            p by: #{song.sartist}
+

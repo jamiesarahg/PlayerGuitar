@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var serialport = require('serialport')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -23,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // Serial
+// Serial
 // var SerialPort = serialport.SerialPort;
-// var serialPort = new SerialPort("/dev/ttyUSB0", { //MUST FIND WHERE IT IS!!
+// var serialPort = new SerialPort('/dev/ttyACM0',{//USB0", { //MUST FIND WHERE IT IS!!
 // baudrate: 9600,
 // parser: serialport.parsers.readline("\n")
 // });
@@ -42,7 +43,6 @@ app.use('/', routes);
 app.use('/users', users);
 app.post('/songs/:id', function(req, res) {
   //serialPort.write(req.params.id)
-  console.log('hi');
   console.log(req.params.id);
 
   res.end();
