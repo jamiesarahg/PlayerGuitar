@@ -17,6 +17,7 @@ int tamacunTime = 60;
 char actuators[] = "000000"; //current state of the actuators
 int pins[6]= {}; //array of pins to be set high
 
+long int time; //time between notes of each song
 char note; //note to be played
 //int timer; //time between notes NOT NEEDED!
 char * notesP; //pointer to where notes are to be played from
@@ -102,13 +103,13 @@ int timer_table[MAX]=
   
 void loop()
 {
-  long int time; //time between notes of each song
+  
 
 
   if (input==true){//(Serial.available() > 0){ //if there is a signal from the screen WHEN INPUT IS READY DELETE FIRST COMMENT AND EVERYTHING UNTIL SERIAL
      // read the incoming byte:
-    int i = Serial.read();
-    i=1; //DELETE ME WHEN INPUT IS WORKING
+    //int i = Serial.read();
+    int i=1; //DELETE ME WHEN INPUT IS WORKING
     notesP = song_table[i];
     time = timer_table[i];
     
@@ -135,7 +136,7 @@ void loop()
 
 bool timetodostuff(int timer){
   //checks to see if it is time to play the next note
-  if (millis() - time_start > timer){return false;}
+  if (millis() - time_start < timer){return false;}
   else{ return true;}
 }
 
