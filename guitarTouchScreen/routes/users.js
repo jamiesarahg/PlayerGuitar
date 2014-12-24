@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.send('respond with a resource');
 });
+router.get('/viewAll', function(req, res){
+	res.send('respond with subpage');
+});
 
 module.exports = router;

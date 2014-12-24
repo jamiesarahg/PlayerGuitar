@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    .grid
+      .row
+        <div class= "span10 offset1">
+        h1 The Acoustronic Guitar
+        h3 To play song, browse by tapping arrows below tap album art to play.
+       </div>
+      .row
+        <div class="tile-group seven" style="padding-top: 0px">
+        <div class="tile triple triple-vertical ol-transparent">
+        <div class="tile-content carousel">
+        <div class="carousel" data-role="carousel" data-auto=false data-height="100%" data-markers-show=false>
+        //- each song in songs
+        <div class="slide image">
+        <img src="docs/images/strokescover.jpg">
+        <div class="brand">
+        <span class="label fg-white bg-dark">
+        h2 The Strokes- Machu Picchu
+        <i class="icon-play"></i>
+        </span>
+
+
+
+
+
+
+    //- h1= title
+    //- p Please click on a song to play!
+    //-   //-#navcontainer
+    //-   .grid 
+    //-     .row
+    //-       //- table  
+    //-       //-tr
+    //-       each song in songs
+    //-           //-td
+    //-           .tile
+
+    //-             img(src= "images/"+song.img id=song.sindex  height="100" width="100") 
+    //-             p #{song.sname}
+    //-             p by: #{song.sartist}
+
+
+
+
+
+
+
+

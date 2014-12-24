@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .grid
+      .row
+      <div class="span10 offset1">
+      h1 The Acoustronic Guitar
+      h3 To play song, tap album art.
+      </div>
+
+      .row
+      <div class="tile-group 2" style="padding-top:0px">
+      <div class="tile double double-vertical bg-darkCyan ol-transparent">
+      <div class="tile-content icon">
+      <h2 class="text-center"><font color="white">Full Song List</font></h2>
+      <i class="icon-music"></i></div>
+      </div>
+      <a href="/"><div class="tile double bg-darkCobalt ol-transparent">
+      <div class="tile-content icon"><i class="icon-home"></i></div>
+      <div class="brand"><span class="label fg-white">Return to home </span></div>
+      </div></a>
+      each song in songs
+        <div class="tile ol-transparent">
+        img(src="images/"+song.img, id=song.sindex)
+        <div class="brand">
+        <span class="label fg-white bg-dark">
+        p #{song.sname} by: #{song.sartist}
+        //- <i class="icon-play"></i>
+        </span>
+        </div>
+        </div>
+
+  
+    </div>
+    </div>
+</div>
+</font>
+</body>
+</html>
